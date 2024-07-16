@@ -22,7 +22,7 @@ class _ProductScreenState extends State<ProductScreen> {
           builder: (context, state) {
             if (state is GetProductInitial) {
               return Center(
-                child: LoadingAnimationWidget.halfTriangleDot(
+                child: LoadingAnimationWidget.inkDrop(
                   color: Colors.blue,
                   size: 50,
                 ),

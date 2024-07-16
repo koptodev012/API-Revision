@@ -78,11 +78,10 @@ class _LoginScreenState extends State<LoginScreen>
         child: BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state) {
             if (state is LoginSuccessState) {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const ProductScreen(),
-                ),
-              );
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (context) => const ProductScreen()),
+                  (Route<dynamic> route) => false);
             } else if (state is LoginFailedState) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -90,14 +89,13 @@ class _LoginScreenState extends State<LoginScreen>
                 ),
               );
             }
+            //  else if (state is LoginLoadingState) {
+            //   const Center(
+            //     child: CircularProgressIndicator(),
+            //   );
+            // }
           },
           builder: (context, state) {
-            if (state is LoginLoadingState) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-
             return Column(
               children: [
                 AnimatedBuilder(
@@ -167,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen>
                                   controller: emailController,
                                   hint: 'e-mail',
                                   obscure: false,
-                                  icon: Icon(Icons.person),
+                                  icon: const Icon(Icons.person),
                                 ),
                                 Container(
                                   decoration: const BoxDecoration(
@@ -184,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen>
                                   controller: passwordController,
                                   hint: 'password',
                                   obscure: true,
-                                  icon: Icon(Icons.lock),
+                                  icon: const Icon(Icons.lock),
                                 ),
                               ],
                             ),

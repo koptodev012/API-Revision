@@ -2,6 +2,7 @@ import 'package:api_revision/features/home/login/cubit/login/login_cubit.dart';
 import 'package:api_revision/features/home/login/presentation/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class CustomButton extends StatelessWidget {
   AnimationController controller;
@@ -62,18 +63,27 @@ class CustomButton extends StatelessWidget {
             ],
           ),
         ),
-        child: Center(
-          child: FadeTransition(
-            opacity: opacidade,
-            child: const Text(
-              "Login",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+        child: BlocBuilder<LoginCubit, LoginState>(
+          builder: (context, state) {
+            return Center(
+              child: FadeTransition(
+                opacity: opacidade,
+                child: state is LoginLoadingState
+                    ? LoadingAnimationWidget.inkDrop(
+                        color: Colors.white,
+                        size: 30,
+                      )
+                    : Text(
+                        "Login",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
               ),
-            ),
-          ),
+            );
+          },
         ),
       ),
       onTap: () {
