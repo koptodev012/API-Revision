@@ -1,7 +1,7 @@
 import 'package:api_revision/features/home/login/cubit/login/login_cubit.dart';
-import 'package:api_revision/features/home/login/presentation/login_screen.dart';
+import 'package:api_revision/features/home/posts/cubit/get_posts/get_posts_cubit.dart';
+import 'package:api_revision/features/home/posts/presentation/posts_screen.dart';
 import 'package:api_revision/features/home/products/cubit/product/get_product_cubit.dart';
-import 'package:api_revision/features/home/products/presentation/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,8 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => GetProductCubit()),
         BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => GetProductCubit()),
+        BlocProvider(create: (context) => GetPostsCubit()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const LoginScreen()),
+          home: const PostsScreen()),
     );
   }
 }

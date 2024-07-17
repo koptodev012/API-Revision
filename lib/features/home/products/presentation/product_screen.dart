@@ -23,7 +23,7 @@ class _ProductScreenState extends State<ProductScreen> {
             if (state is GetProductInitial) {
               return Center(
                 child: LoadingAnimationWidget.inkDrop(
-                  color: Colors.blue,
+                  color: Colors.orange,
                   size: 50,
                 ),
               );
@@ -35,7 +35,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   itemBuilder: (context, index) {
                     var perticularProduct = state.product[index];
                     return Card(
-                      color: Colors.grey[300],
+                      color: Colors.orange,
                       elevation: 2,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

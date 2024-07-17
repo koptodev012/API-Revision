@@ -73,7 +73,7 @@ class CustomButton extends StatelessWidget {
                         color: Colors.white,
                         size: 30,
                       )
-                    : Text(
+                    : const Text(
                         "Login",
                         style: TextStyle(
                           color: Colors.white,
