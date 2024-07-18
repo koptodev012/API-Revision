@@ -1,6 +1,6 @@
 import 'package:api_revision/features/home/login/cubit/login/login_cubit.dart';
+import 'package:api_revision/features/home/login/presentation/login_screen.dart';
 import 'package:api_revision/features/home/posts/cubit/get_posts/get_posts_cubit.dart';
-import 'package:api_revision/features/home/posts/presentation/posts_screen.dart';
 import 'package:api_revision/features/home/products/cubit/product/get_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const PostsScreen()),
+          home: const LoginScreen()),
     );
   }
 }

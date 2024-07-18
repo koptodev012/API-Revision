@@ -14,16 +14,20 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         appBar: AppBar(
-          title: const Text('Get All Products'),
+          backgroundColor: Colors.black,
+          title: const Text(
+            'Get All Products',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
         body: BlocBuilder<GetProductCubit, GetProductState>(
           builder: (context, state) {
             if (state is GetProductInitial) {
               return Center(
                 child: LoadingAnimationWidget.inkDrop(
-                  color: Colors.orange,
+                  color: Colors.white,
                   size: 50,
                 ),
               );
@@ -34,21 +38,24 @@ class _ProductScreenState extends State<ProductScreen> {
                   itemCount: state.product.length,
                   itemBuilder: (context, index) {
                     var perticularProduct = state.product[index];
-                    return Card(
-                      color: Colors.orange,
-                      elevation: 2,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(perticularProduct["id"].toString()),
-                            Text(perticularProduct["title"]),
-                            Text(perticularProduct["description"]),
-                            Text(perticularProduct["category"]),
-                            Text(perticularProduct["price"].toString()),
-                            Text(perticularProduct["rating"].toString()),
-                          ],
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 10.0, right: 10),
+                      child: Card(
+                        color: Color(0xffFFF4E5),
+                        elevation: 4,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(perticularProduct["id"].toString()),
+                              Text(perticularProduct["title"]),
+                              Text(perticularProduct["description"]),
+                              Text(perticularProduct["category"]),
+                              Text(perticularProduct["price"].toString()),
+                              Text(perticularProduct["rating"].toString()),
+                            ],
+                          ),
                         ),
                       ),
                     );

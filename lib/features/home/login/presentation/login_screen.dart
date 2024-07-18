@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:api_revision/common/widget/bottom_navbar.dart';
 import 'package:api_revision/features/home/login/cubit/login/login_cubit.dart';
 import 'package:api_revision/features/home/login/presentation/button.dart';
 import 'package:api_revision/features/home/login/presentation/textfield.dart';
@@ -26,6 +27,10 @@ class _LoginScreenState extends State<LoginScreen>
   @override
   void initState() {
     super.initState();
+
+    emailController.text = 'eve.holt@reqres.in';
+    passwordController.text = 'pistol';
+
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1000),
@@ -79,8 +84,7 @@ class _LoginScreenState extends State<LoginScreen>
           listener: (context, state) {
             if (state is LoginSuccessState) {
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                      builder: (context) => const ProductScreen()),
+                  MaterialPageRoute(builder: (context) => const BottomNavbar()),
                   (Route<dynamic> route) => false);
             } else if (state is LoginFailedState) {
               ScaffoldMessenger.of(context).showSnackBar(
